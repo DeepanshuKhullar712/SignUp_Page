@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:signup_page/landingPage.dart';
+import 'package:signup_page/signIn.dart';
+import 'package:signup_page/signUp2.dart';
 import 'package:signup_page/signupPage.dart';
 
 void main(){
@@ -15,11 +18,15 @@ class MyApp extends StatelessWidget{
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        //backgroundColor: #1e1d2b
       ),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
-      //NoteList(),
+      home:
+      //signUp2(),
+      //SignUp1(),
+      //SIgnIn(),
+      landing(),
     );
   }
 }

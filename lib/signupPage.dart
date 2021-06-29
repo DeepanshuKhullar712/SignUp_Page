@@ -1,135 +1,117 @@
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:signup_page/signIn.dart';
+import 'package:signup_page/signUp2.dart';
 
 import 'constants.dart/constants.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({key}) : super(key: key);
+class SignUp1 extends StatefulWidget {
+  const SignUp1({key}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignUpState extends State<SignUp1> {
   _SignUpState();
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController firstName= TextEditingController();
-    final TextEditingController lastName= TextEditingController();
     final TextEditingController email= TextEditingController();
     final TextEditingController phone = TextEditingController();
-    final TextEditingController password= TextEditingController();
-    final TextEditingController repassword= TextEditingController();
 
 
-    return Scaffold(
-      //backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: Text("Sign Up",style: TextStyle(fontSize: 30 ),),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.close),
-            iconSize: 35,
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
+    return  Scaffold(
+        resizeToAvoidBottomPadding: true,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20.0,right: 20, bottom: 10),
           child: Form(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 10,),
-                Text("First Name",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 10,),
+                SizedBox(height: 30,),
+                Table(
+                  children: [
+                    TableRow(
+                        children:[
+                          TableCell(
+                            verticalAlignment: TableCellVerticalAlignment.middle,
+                            child: Text("Sign Up",style: TextStyle(fontSize: 45 ,fontWeight: FontWeight.bold),),
+                          ),
+                          TableCell(
+                            child: Image(
+                              image: AssetImage('images/Logo_vector.png'),
+                              width: 150,
+                              height: 150,
+                            ),
+                          )
+                        ]
+                    )
+                  ],
+                ),
+                SizedBox(height: 60,),
                 TextFormField(
-                    decoration: textInputDecoration.copyWith(hintText: "Your First name",),
+                  decoration: textInputDecoration.copyWith(hintText: "Your First name",prefixIcon: Icon(Icons.account_box)),
                   controller: firstName,
                 ),
-                SizedBox(height: 12,),
-                Text("Last Name",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 12,),
+                SizedBox(height: 40,),
                 TextFormField(
-                    decoration: textInputDecoration.copyWith(hintText: "Your Last name",),
-                  controller: lastName,
-                ),
-                SizedBox(height: 12,),
-                Text("Email address",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 12,),
-                TextFormField(
-                    decoration: textInputDecoration.copyWith(hintText: "Your email address",),
+                  decoration: textInputDecoration.copyWith(hintText: "Your email address",prefixIcon: Icon(Icons.email),),
                   controller: email,
                 ),
-                SizedBox(height: 12,),
-                Text("Phone No",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 12,),
+                SizedBox(height: 40,),
                 IntlPhoneField(
                   initialCountryCode: 'IN',
-                  decoration: textInputDecoration.copyWith(labelText: 'Phone Number',),
+                  decoration: textInputDecoration.copyWith(hintText: 'Phone Number',prefixIcon: Icon(Icons.call)),
                   controller: phone,
                 ),
-
-                SizedBox(height: 12,),
-                Text("Password",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 12,),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
-                      ),
-                      borderSide: BorderSide(color: Colors.white, width: 2),
+                SizedBox(height: 40,),
+                Center(
+                  child: RaisedButton(
+                    child: Icon(Icons.arrow_forward_ios),
+                    color: Colors.cyan,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30)
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white,width: 4),
-                    ),
-                    hintText: "password",
-                    suffixIcon: Icon(Icons.remove_red_eye),
 
+
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => signUp2()),
+                      );
+
+                    },
                   ),
-                  controller: password,
                 ),
-                SizedBox(height: 12,),
-                Text("Re-enter Password",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),),
-                SizedBox(height: 12,),
-                TextFormField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: const BorderRadius.all(
-                        const Radius.circular(10.0),
-                      ),
-                      borderSide: BorderSide(color: Colors.white, width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white,width: 4),
-                    ),
-                    hintText: "password",
-                    suffixIcon: Icon(Icons.remove_red_eye),
-                  ),
-                  controller: repassword,
-                ),
-                SizedBox(height: 100,),
 
+
+
+                SizedBox(height: 40,),
+                Center(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text("Already have an account?"),
+                      FlatButton(
+                          child: Text("Sign In",style: TextStyle(decoration: TextDecoration.underline,color: Colors.white),),
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SIgnIn()),
+                            );
+                          }
+                      )
+                    ],
+                  ),
+                )
 
 
               ],
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        label: Text("Next",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500,color: Colors.white)),
-        backgroundColor: Colors.blueAccent,
-        onPressed: (){},
-
-
-
-      ),
 
     );
 
