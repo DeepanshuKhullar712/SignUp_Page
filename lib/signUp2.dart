@@ -22,8 +22,7 @@ class _signUp2State extends State<signUp2> {
       body: Padding(
         padding: const EdgeInsets.only(left: 20.0,right: 20, bottom: 10),
         child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               SizedBox(height: 30,),
               Table(
@@ -72,7 +71,7 @@ class _signUp2State extends State<signUp2> {
               Center(
                 child: RaisedButton(
                   child: Icon(Icons.arrow_forward_ios),
-                  color: Colors.cyan,
+                  color: Color(0xFF36A8B7),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)
                   ),
